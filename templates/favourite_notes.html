@@ -1,0 +1,98 @@
+<!doctype html>
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %} 
+{% block navbar %}
+ <link rel="stylesheet" href="{% static 'test.css' %}">
+{% include 'navbar2.html' %}
+{% endblock %}
+ {% block blog %}
+
+ <div class="container my-5 ">
+
+
+  
+  <!--Section: Content-->
+  <section class="magazine-section dark-grey-text ">
+ {% if fav_notes %}
+ 
+  
+ 
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="offset-lg-2 col-lg-7 col-md-12 mb-4 ">
+{% for note in fav_notes %}
+        <!-- Small news -->
+        <div class="single-news mb-4">
+
+          <!-- Grid row -->
+          <div class="row">
+
+            <!-- Grid column -->
+            <div class="col-md-3">
+
+
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-9 blue-grey lighten-5">
+              <p class="font-weight-bold dark-grey-text pt-3 pull-right">{{note.publish|date:'d M Y'}}</p>
+
+              <div class="d-flex justify-content-between">
+                <div class="col-11 pl-0 mb-3 text-center pt-3">
+                  <div class="text-center"><a href="{% url 'note-detail' note.pk %}" class="dark-grey-text h6 ">{{ note.title | title }}</a>
+                   &nbsp; &nbsp;<a href="{% url 'note-detail' note.pk %}" class=""><i class="fas fa-caret-right fa-lg blue-grey-text"></i></a></div>
+                  <p class="text-justify">{{note.content | truncatewords:15 }}</p>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+{% endfor %}
+        </div>
+
+    </div>
+<nav aria-label="Page navigation example">
+  {% if fav_notes.has_other_pages %}
+
+  <ul class="pagination pagination-circle  justify-content-center">
+    {% if fav_notes.has_previous %}
+    <li class="page-item ">
+      <a class="page-link" tabindex="-1" href="?page={{ fav_notes.previous_page_number }}">Previous</a>
+    </li>
+    {% else %}
+    <li class="page-item disabled"></li>
+    {% endif %}
+    {% for i in fav_notes.paginator.page_range %}
+    {% if fav_notes.number == i %}
+    <li class="page-item"><a class="page-link">{{i}}</a></li>
+    {% else %}
+    <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+    {% endif %}
+    {% endfor %}
+    {% if fav_notes.has_next %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{ fav_notes.next_page_number }}">Next</a>
+    </li>
+    {% else %}
+    <li class="page-item disabled"></li>
+    {% endif %}
+  </ul>
+  {% endif %}
+</nav>
+
+  {% else %}
+ <h3 class="text-center mt-3">No Favourite notes found</h3>
+       
+  {% endif %}
+  </section>
+  <!--Section: Content-->
+
+
+</div>
+ {% endblock %}

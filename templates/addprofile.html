@@ -1,0 +1,25 @@
+<!doctype html>
+{% extends 'base.html' %}
+{% load crispy_forms_tags %} 
+{% load static %}
+{% block navbar %}
+ <link rel="stylesheet" href="{% static 'test.css' %}">
+{% include 'navbar2.html' %}
+{% endblock %}
+
+{% block blog %}
+<div class="container signupContainer">
+  <div class="row justify-content-center">
+    <div class="col-12 px-5 py-3 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6" style="background-color: white  ;">
+      <h1 class="mt-2">Add Your Profile</h1>
+      <hr class="mt-0 mb-4">
+      <form method='POST' enctype="multipart/form-data" class="text-center border border-light p-5 blue-grey lighten-4">
+        {%csrf_token%}
+        {{form | crispy}}
+        <button type='submit' class="btn btn-blue-grey lighten-1 text-white">Submit</button><br/>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,71 @@
+<!doctype html>
+{% extends 'base.html' %}
+{% load static %}
+{% block navbar %}
+ <link rel="stylesheet" href="{% static 'test.css' %}">
+{% include 'navbar2.html' %}
+{% endblock %}
+
+{% block blog %}
+<section class="section pb-3 text-center mt-5">
+
+ <!-- <div class="row"> -->
+
+
+  <!--Grid column-->
+<!--   <div class="offset-lg-1 col-lg-3 col-md-3"> -->
+<!-- <div class="offset-lg-1"> -->
+  <div class="container">
+   <div class="row">
+    <div class="offset-lg-2 col-lg-3">
+    <div class="card py-3 px-3">
+      <div class="avatar mx-auto white mt-2">
+        {% if user.userprofile.profilepic %}
+        <img class=" rounded-circle  " src="{{ user.userprofile.profilepic.url }}" data-holder-rendered="true" width="150" height="120">
+        {% else %}
+        <img class="img-responsive" src="#" alt="profile">
+        {% endif %}
+      </div>
+
+      <!-- <div class="card-body"> -->
+        <h4 class="card-title mt-1">My Name: <span class="h4">{{user |title}}</span></h4>
+        <hr>
+        <p>Email: <span class="h6">{{user.email}}</span></p>
+        {% if user.userprofile %}
+        <a href="{% url 'edit-profile' %}" class="btn btn-blue-grey lighten-1 text-white">Edit Profile</a>
+        {% else %}
+        <a href="{% url 'add-profile' %}" class="btn btn-blue-grey lighten-1 text-white">Add Profile</a>
+        {% endif %}
+      
+
+    </div>
+  </div>
+{% if user.userprofile %}
+      <div class="card px-5">
+      <div class="card-header font-weight-bold h4">My Profile</div>
+      <div class="card-body text-left pl-5 ">
+        {% if user.userprofile.first_name %}
+        <p class=""><strong>First Name:</strong> {{ user.userprofile.first_name | title}}<p/>
+          {% endif %}
+          {% if user.userprofile.last_name %}
+          <p class=""><strong>Last Name:</strong>  {{ user.userprofile.last_name|lower|capfirst}}</p>
+          {% endif %}
+          {% if user.userprofile.birthday %}
+          <p class=""> <strong>Date of Birth:</strong>  {{ user.userprofile.birthday|date:"F d, Y"}}</p>
+          {% endif %}
+          {% if user.userprofile.hobby %}
+          <p class=""><strong>Hobby: </strong>{{ user.userprofile.hobby | title}}</p>
+          {% endif %}
+          {% if user.userprofile.bio %}
+          <p class=""><strong>Bio: </strong>  {{ user.userprofile.bio | capfirst}}</p>
+          {% endif %}
+
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+
+</section>
+{% endblock %}

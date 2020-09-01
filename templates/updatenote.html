@@ -1,0 +1,60 @@
+<!doctype html>
+{% extends 'base.html' %}
+{% load crispy_forms_tags %} 
+{% load static %}
+{% block navbar %}
+ <link rel="stylesheet" href="{% static 'test.css' %}">
+{% include 'navbar2.html' %}
+{% endblock %}
+
+{% block blog %}
+<div class="container signupContainer">
+  <div class="row justify-content-center">
+    <div class="col-12 px-5 py-3 col-xs-12 col-sm-12 col-md-12 col-lg-9 col-xl-9">
+      <h1 class="mt-2 text-center">Update Note</h1>
+      <hr class="mt-0 mb-4">
+      <form method='POST' enctype="multipart/form-data"  class="text-center text-dark border border-light px-3 py-3 blue-grey lighten-4">
+        {%csrf_token%}
+        {{ form.media }}
+        {{form | crispy}}
+        {% if form.categories.errors %}
+        {% for field in form %}
+        {% for error in field.errors %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          <strong>{{ error|escape }}</strong> 
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          <strong>{{ error|escape }}</strong> 
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% if form.thumbnail.errors %}
+        {% for field in form %}
+        {% for error in field.errors %}
+        <div class="alert alert-danger">
+          <strong>{{ error|escape }}</strong>
+        </div>
+        {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+        <div class="alert alert-danger">
+          <strong>{{ error|escape }}</strong>
+        </div>
+        {% endfor %}
+        {% endif %}
+        <button type='submit' class="btn btn-blue-grey lighten-1 text-white">Submit</button><br/>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
+

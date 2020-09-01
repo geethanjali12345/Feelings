@@ -1,0 +1,107 @@
+<!doctype html>
+
+{% extends 'base.html' %}
+{% load static %}
+{% block navbar %}
+ <link rel="stylesheet" href="{% static 'test.css' %}">
+{% include 'navbar2.html' %}
+{% endblock %}
+  {% block blog %}
+  <div class="container my-5 ">
+  <!--Section: Content-->
+  <section class="magazine-section dark-grey-text ">
+{% if notes %}
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="offset-lg-2 col-lg-7 col-md-12 mb-4 ">
+ {% for note in notes %}
+        <!-- Small news -->
+        <div class="single-news mb-2">
+
+          <!-- Grid row -->
+          <div class="row">
+
+            <!-- Grid column -->
+            <div class="col-md-3">
+
+              <!--Image-->
+              <div class="view overlay rounded z-depth-1 mb-4">
+                <!-- <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/img%20(29).jpg" alt="Sample image"> -->
+                <a>
+                  <div class="mask rgba-white-slight"></div>
+                </a>
+              </div>
+
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-9 blue-grey lighten-5">
+
+              <!-- Excerpt -->
+              
+               <!-- <span class="text-center"> <a href="{% url 'note-detail' note.pk %}" class="dark-grey-text h6 ">{{ note.title }}</a></span> -->
+              <p class="font-weight-bold dark-grey-text pt-3 pull-right">{{note.publish|date:'d M Y'}}</p>
+
+              <div class="d-flex justify-content-between">
+                <div class="col-11 pl-0 mb-3 text-center pt-3">
+                  <div class="text-center"><a href="{% url 'note-detail' note.pk %}" class="dark-grey-text h6 ">{{ note.title | title }}</a>
+                   &nbsp; &nbsp;<a href="{% url 'note-detail' note.pk %}" class=""><i class="fas fa-caret-right fa-lg blue-grey-text"></i></a></div>
+                  <p class="text-justify">{{note.content | truncatewords:15 }}</p>
+                 <!--  <button type="btn" class="btn btn-outline-warning waves-effect">View</button> -->
+                </div>
+              </div>
+
+            </div>
+            <!-- Grid column -->
+
+          </div>
+          <!-- Grid row -->
+
+        </div>
+        <!-- Small news -->
+{% endfor %}
+        </div>
+      <!--Grid column-->
+
+    </div>
+    <!-- Grid row -->
+
+
+  {% else %}
+  <h3 class="mt-3 text-center">No notes found</h3>
+  {% endif %}
+  </section>
+  <!--Section: Content-->
+<nav aria-label="Page navigation example">
+  {% if notes.has_other_pages %}
+
+  <ul class="pagination pagination-circle  justify-content-center">
+    {% if notes.has_previous %}
+    <li class="page-item ">
+      <a class="page-link" tabindex="-1" href="?page={{ notes.previous_page_number }}">Previous</a>
+    </li>
+    {% else %}
+    <li class="page-item disabled"></li>
+    {% endif %}
+    {% for i in notes.paginator.page_range %}
+    {% if notes.number == i %}
+    <li class="page-item"><a class="page-link">{{i}}</a></li>
+    {% else %}
+    <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+    {% endif %}
+    {% endfor %}
+    {% if notes.has_next %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{ notes.next_page_number }}">Next</a>
+    </li>
+    {% else %}
+    <li class="page-item disabled"></li>
+    {% endif %}
+  </ul>
+  {% endif %}
+</nav>
+
+</div>
+ {% endblock %}

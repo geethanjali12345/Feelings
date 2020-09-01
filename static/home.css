@@ -1,0 +1,168 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Marck+Script&family=Russo+One&family=Satisfy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Gayathri&display=swap');
+body, html,header ,.view{
+  height: 100%;
+}
+
+@media (max-width: 740px) {
+  html,
+  body,
+  header,
+  .view {
+    height: 1000px;
+  }
+}
+@media (min-width: 800px) and (max-width: 850px) {
+  html,
+  body,
+  header,
+  .view {
+    height: 600px;
+  }
+}
+
+.btn .fa {
+  margin-left: 3px;
+}
+
+.top-nav-collapse {
+  background-color: #424f95 !important;
+}
+
+.navbar:not(.top-nav-collapse) {
+  background: transparent !important;
+}
+
+@media (max-width: 991px) {
+  .navbar:not(.top-nav-collapse) {
+   /* background: #424f95 !important;*/
+    background: #4D535E !important;
+  }
+}
+
+.btn-white {
+  color: black !important;
+}
+
+h6 {
+  line-height: 1.7;
+}
+
+.rgba-gradient {
+  background: -moz-linear-gradient(45deg, rgba(42, 27, 161, 0.7), rgba(29, 210, 177, 0.7) 100%);
+  background: -webkit-linear-gradient(45deg, rgba(42, 27, 161, 0.7), rgba(29, 210, 177, 0.7) 100%);
+  background: -webkit-gradient(linear, 45deg, from(rgba(42, 27, 161, 0.7)), to(rgba(29, 210, 177, 0.7)));
+  background: -o-linear-gradient(45deg, rgba(42, 27, 161, 0.7), rgba(29, 210, 177, 0.7) 100%);
+  background: linear-gradient(to 45deg, rgba(42, 27, 161, 0.7), rgba(29, 210, 177, 0.7) 100%);
+}
+
+.home-intro{
+	margin-top: 20%;
+}
+
+.navbar-brand{
+  font-family: 'Dancing Script', cursive;
+  font-size: 2em;
+}
+
+.nav-link{
+  font-family: 'Gayathri', sans-serif;
+  font-size: 1.2em;
+}
+
+
+/*.home{
+	background-image: url('/static/img/index13.jpg');
+  height: 100%; 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #464646;
+
+}
+.title-content{
+	text-align: center;
+}
+.heading{
+	font-family: 'Lobster', cursive;
+}
+.sub-heading{
+	font-family: 'Marck Script', cursive;
+}
+.login{
+	font-family: 'Noto Serif', sans-serif;
+	color: white;
+}
+.login a{
+	color: white;
+	font-size: 1.5em;
+}
+@media (max-width: 400px) { 
+	.title-content{
+		padding-top: 88%;
+		margin-left: -7%;
+	}
+
+ }
+@media (max-width: 575.98px) { 
+	.title-content{
+		padding-top: 50%;
+		margin-left: -7%;
+	}
+
+ }
+@media (min-width: 576px) and (max-width: 767.98px) { 
+	.title-content{
+		padding-top: 25%;
+	}
+ }
+
+@media (min-width: 768px) and (max-width: 991.98px) { 
+	.title-content{
+		padding-top: 25%;
+	}
+ }
+
+@media (min-width: 992px) and (max-width: 1199.98px) { 
+	.title-content{
+		padding-top: 25%;
+	}
+ }
+
+@media (min-width: 1200px) { 
+.title-content{
+		padding-top: 25%;
+	}
+ }
+
+.date{
+	width:20%;
+}
+.title{
+	width: 50%;
+}
+.loginContainer{
+	margin-top: 10%;
+}
+.signupContainer{
+	margin-top: 5%;
+}
+
+/*@import url(https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.3/css/mdb.min.css);
+
+.hm-gradient {
+    background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+}
+.darken-grey-text {
+    color: #2E2E2E;
+}*/
+
+.home{
+  background-image: url("/static/index.jpg"); 
+  background-repeat: no-repeat; 
+  background-size: cover; 
+  background-position: center center;
+}
